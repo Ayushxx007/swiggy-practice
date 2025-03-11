@@ -1,0 +1,10 @@
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+
+
+
+
+
+let element=React.createElement('h1', {id:"mahika"}, "Hello, world!");
+let root =ReactDOM.createRoot(document.getElementById('root'));
+root.render(element);
