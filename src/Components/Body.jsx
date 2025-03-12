@@ -4,6 +4,7 @@ import { Link } from 'react-router';
 import RestaurantCard from './RestaurantCard';
 import { useEffect,useState } from 'react';
 import Shimmer from './Shimmer.jsx';
+import useOnline from '../utils/useOnline.js';
 
 
 
@@ -36,6 +37,14 @@ const Body = () => {
 
 
     },[]);
+
+    const isOnline=useOnline();
+
+    if(!isOnline){
+      return <h1 className="text-4xl text-center">No Internet Connection</h1>;
+
+    }
+
 
     
     if(resData.length===0){

@@ -1,34 +1,21 @@
-import React, { useEffect,useState } from 'react'
+import React from 'react'
 import { useParams } from 'react-router';
 import Shimmer from './Shimmer';
+import useRestaurantMenu from '../utils/useRestaurantMenu';
 
-const datax="https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=26.91360&lng=75.78580&restaurantId=";
 
 
 
 const RestaurantMenu = () => {
 
-    const [data,setData]=useState(null);
+
     const {resId}=useParams();
+
+
+    const data=useRestaurantMenu(resId);
    
 
-    useEffect(()=>{
-
-        fetchData();
-
-
-    },[]);
-
-    fetchData = async () => {
-        const response = await fetch(datax+resId);
-        const data = await response.json();
-
-       const myData= data?.data?.cards[2]?.card?.card?.info;
-       setData(myData);
-      
-
-        
-    }
+ 
 
     if(data===null){
         return <Shimmer/>;
@@ -46,8 +33,6 @@ const RestaurantMenu = () => {
           )
 
     }
-
-
 
 
 
